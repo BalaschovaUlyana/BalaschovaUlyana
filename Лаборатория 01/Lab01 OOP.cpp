@@ -1,4 +1,4 @@
-// Lab01 OOP.cpp: определяет точку входа для консольного приложения.
+// Lab01 OOP.cpp: РѕРїСЂРµРґРµР»СЏРµС‚ С‚РѕС‡РєСѓ РІС…РѕРґР° РґР»СЏ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
 //
 #include "stdafx.h"
 #include <iostream>
@@ -7,8 +7,8 @@
 #include <iterator>
 using namespace std;
 
-//обявления функций
-void addStudents(StudentGroup &group); //передача в функцию обьекта по ссылке
+//РѕР±СЏРІР»РµРЅРёСЏ С„СѓРЅРєС†РёР№
+void addStudents(StudentGroup &group); //РїРµСЂРµРґР°С‡Р° РІ С„СѓРЅРєС†РёСЋ РѕР±СЊРµРєС‚Р° РїРѕ СЃСЃС‹Р»РєРµ
 void addStudents2(StudentGroup &group);
 
 void printList(list<Student> students);
@@ -16,28 +16,28 @@ void printList(list<Student> students);
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    //инициализация обьектов
+    //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕР±СЊРµРєС‚РѕРІ
     StudentGroup group;
     StudentGroup group2;
 
     addStudents(group);
     addStudents2(group2);
 
-    Student student3 = group.getStudentByFIO("Исакова Юлия Павловна");
-    string answer = " Cтудент ";
-    string answer2 = " найден в группе.";
+    Student student3 = group.getStudentByFIO("РСЃР°РєРѕРІР° Р®Р»РёСЏ РџР°РІР»РѕРІРЅР°");
+    string answer = " CС‚СѓРґРµРЅС‚ ";
+    string answer2 = " РЅР°Р№РґРµРЅ РІ РіСЂСѓРїРїРµ.";
     if(student3.getRating()==0){answer="";answer2="";}
-    cout<<endl<<"!!!Результат поиска: "<<answer<<student3.getFIO()<<answer2<<endl<<endl;
+    cout<<endl<<"!!!Р РµР·СѓР»СЊС‚Р°С‚ РїРѕРёСЃРєР°: "<<answer<<student3.getFIO()<<answer2<<endl<<endl;
 
     cout << group << endl;
 
     group.deleteStudent(student3);
 
-    cout<<"!!!!!!Отсортированный список в лексикографическом порядке"<<endl;
+    cout<<"!!!!!!РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє РІ Р»РµРєСЃРёРєРѕРіСЂР°С„РёС‡РµСЃРєРѕРј РїРѕСЂСЏРґРєРµ"<<endl;
     printList(group.getSortedListByAlphabet());
 
 
-    cout<<"!!!!!!!Отсортированный список по рейтингу"<<endl;
+    cout<<"!!!!!!!РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє РїРѕ СЂРµР№С‚РёРЅРіСѓ"<<endl;
     printList(group2.getSortedListByRating());
 
     cout << group2 << endl;
@@ -51,102 +51,103 @@ int main()
 
 void printList(list<Student> students)
 {
-    cout<<"!!Начало отсортированного списка!!"<<endl;
-    //обьявляем итератор на первый элемент списка
+    cout<<"!!РќР°С‡Р°Р»Рѕ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°!!"<<endl;
+    //РѕР±СЊСЏРІР»СЏРµРј РёС‚РµСЂР°С‚РѕСЂ РЅР° РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°
     auto it = students.begin();
-    //идём в цикле до последнего элемента списка
+    //РёРґС‘Рј РІ С†РёРєР»Рµ РґРѕ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР°
     while(it!=students.end())
     {
-        //вызываем функцию для печати студента
+        //РІС‹Р·С‹РІР°РµРј С„СѓРЅРєС†РёСЋ РґР»СЏ РїРµС‡Р°С‚Рё СЃС‚СѓРґРµРЅС‚Р°
         it->printStudent();
         it++;
     }
-    cout<<"!!Конец отсортированного списка!!"<<endl<<endl;
+    cout<<"!!РљРѕРЅРµС† РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°!!"<<endl<<endl;
 }
 
 void addStudents(StudentGroup& group)
 {
     Student stud;
-    stud.setFio("Иванов","Александр","Александрович"); stud.setRating(5);
+    stud.setFio("РРІР°РЅРѕРІ","РђР»РµРєСЃР°РЅРґСЂ","РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡"); stud.setRating(5);
     group.addStudent(stud);
     Student stud1;
-    stud1.setFio("Крюкова","Ольга","Петровна"); stud1.setRating(4);
+    stud1.setFio("РљСЂСЋРєРѕРІР°","РћР»СЊРіР°","РџРµС‚СЂРѕРІРЅР°"); stud1.setRating(4);
     group.addStudent(stud1);
     Student stud2;
-    stud2.setFio("Дудник","Андрей","Романович"); stud2.setRating(5);
+    stud2.setFio("Р”СѓРґРЅРёРє","РђРЅРґСЂРµР№","Р РѕРјР°РЅРѕРІРёС‡"); stud2.setRating(5);
     group.addStudent(stud2);
     Student stud3;
-    stud3.setFio("Медведев","Дмитрий","Алексеевич"); stud3.setRating(4);
+    stud3.setFio("РњРµРґРІРµРґРµРІ","Р”РјРёС‚СЂРёР№","РђР»РµРєСЃРµРµРІРёС‡"); stud3.setRating(4);
     group.addStudent(stud3);
     Student stud4;
-    stud4.setFio("Тараканов","Борис","Давидович"); stud4.setRating(3);
+    stud4.setFio("РўР°СЂР°РєР°РЅРѕРІ","Р‘РѕСЂРёСЃ","Р”Р°РІРёРґРѕРІРёС‡"); stud4.setRating(3);
     group.addStudent(stud4);
     Student stud5;
-    stud5.setFio("Багдасарян","Рафаэль","Макарович"); stud5.setRating(3);
+    stud5.setFio("Р‘Р°РіРґР°СЃР°СЂСЏРЅ","Р Р°С„Р°СЌР»СЊ","РњР°РєР°СЂРѕРІРёС‡"); stud5.setRating(3);
     group.addStudent(stud5);
     Student stud6;
-    stud6.setFio("Васильев","Михаил","Петрович"); stud6.setRating(2);
+    stud6.setFio("Р’Р°СЃРёР»СЊРµРІ","РњРёС…Р°РёР»","РџРµС‚СЂРѕРІРёС‡"); stud6.setRating(2);
     group.addStudent(stud6);
     Student stud7;
-    stud7.setFio("Горбунов","Арсений","Альбертович"); stud7.setRating(3);
+    stud7.setFio("Р“РѕСЂР±СѓРЅРѕРІ","РђСЂСЃРµРЅРёР№","РђР»СЊР±РµСЂС‚РѕРІРёС‡"); stud7.setRating(3);
     group.addStudent(stud7);
     Student stud8;
-    stud8.setFio("Воронцов","Георгий","Максимович"); stud8.setRating(4);
+    stud8.setFio("Р’РѕСЂРѕРЅС†РѕРІ","Р“РµРѕСЂРіРёР№","РњР°РєСЃРёРјРѕРІРёС‡"); stud8.setRating(4);
     group.addStudent(stud8);
     Student stud9;
-    stud9.setFio("Архипов","Гавриил","Русланович"); stud9.setRating(5);
+    stud9.setFio("РђСЂС…РёРїРѕРІ","Р“Р°РІСЂРёРёР»","Р СѓСЃР»Р°РЅРѕРІРёС‡"); stud9.setRating(5);
     group.addStudent(stud9);
     Student stud10;
-    stud10.setFio("Панов","Евгений","Владиславович"); stud10.setRating(5);
+    stud10.setFio("РџР°РЅРѕРІ","Р•РІРіРµРЅРёР№","Р’Р»Р°РґРёСЃР»Р°РІРѕРІРёС‡"); stud10.setRating(5);
     group.addStudent(stud10);
     Student stud11;
-    stud11.setFio("Петров","Фёдор","Вениаминович"); stud11.setRating(2);
+    stud11.setFio("РџРµС‚СЂРѕРІ","Р¤С‘РґРѕСЂ","Р’РµРЅРёР°РјРёРЅРѕРІРёС‡"); stud11.setRating(2);
     group.addStudent(stud11);
-    stud11.setFio("Рогов","Харитон","Романович"); stud11.setRating(2);
+    stud11.setFio("Р РѕРіРѕРІ","РҐР°СЂРёС‚РѕРЅ","Р РѕРјР°РЅРѕРІРёС‡"); stud11.setRating(2);
     group.addStudent(stud11);
-    stud11.setFio("Игнатьев","Юрий","Филатович"); stud11.setRating(3);
+    stud11.setFio("РРіРЅР°С‚СЊРµРІ","Р®СЂРёР№","Р¤РёР»Р°С‚РѕРІРёС‡"); stud11.setRating(3);
     group.addStudent(stud11);
-    stud11.setFio("Быкова","Анна","Семёновна"); stud11.setRating(4);
+    stud11.setFio("Р‘С‹РєРѕРІР°","РђРЅРЅР°","РЎРµРјС‘РЅРѕРІРЅР°"); stud11.setRating(4);
     group.addStudent(stud11);
-    stud11.setFio("Большакова","Ксения","Валерьяновна"); stud11.setRating(5);
+    stud11.setFio("Р‘РѕР»СЊС€Р°РєРѕРІР°","РљСЃРµРЅРёСЏ","Р’Р°Р»РµСЂСЊСЏРЅРѕРІРЅР°"); stud11.setRating(5);
     group.addStudent(stud11);
-    stud11.setFio("Исакова","Юлия","Павловна"); stud11.setRating(1);
+    stud11.setFio("РСЃР°РєРѕРІР°","Р®Р»РёСЏ","РџР°РІР»РѕРІРЅР°"); stud11.setRating(1);
     group.addStudent(stud11);
-    stud11.setFio("Молчанова","Ирина","Викторовна"); stud11.setRating(2);
+    stud11.setFio("РњРѕР»С‡Р°РЅРѕРІР°","РСЂРёРЅР°","Р’РёРєС‚РѕСЂРѕРІРЅР°"); stud11.setRating(2);
     group.addStudent(stud11);
-    stud11.setFio("Юдина","Кристина","Юрьевна"); stud11.setRating(3);
+    stud11.setFio("Р®РґРёРЅР°","РљСЂРёСЃС‚РёРЅР°","Р®СЂСЊРµРІРЅР°"); stud11.setRating(3);
     group.addStudent(stud11);
-    stud11.setFio("Некрасова","Лиза","Владимировна"); stud11.setRating(4);
+    stud11.setFio("РќРµРєСЂР°СЃРѕРІР°","Р›РёР·Р°","Р’Р»Р°РґРёРјРёСЂРѕРІРЅР°"); stud11.setRating(4);
     group.addStudent(stud11);
-    stud11.setFio("Одинцова","Диана","Всеволодовна"); stud11.setRating(5);
+    stud11.setFio("РћРґРёРЅС†РѕРІР°","Р”РёР°РЅР°","Р’СЃРµРІРѕР»РѕРґРѕРІРЅР°"); stud11.setRating(5);
     group.addStudent(stud11);
-    stud11.setFio("Исакова","Екатерина","Георгьевна"); stud11.setRating(2);
+    stud11.setFio("РСЃР°РєРѕРІР°","Р•РєР°С‚РµСЂРёРЅР°","Р“РµРѕСЂРіСЊРµРІРЅР°"); stud11.setRating(2);
     group.addStudent(stud11);
 }
 
 void addStudents2(StudentGroup& group)
 {
     Student stud;
-    stud.setFio("Иванов","Александр","Александрович"); stud.setRating(5);
+    stud.setFio("РРІР°РЅРѕРІ","РђР»РµРєСЃР°РЅРґСЂ","РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡"); stud.setRating(5);
     group.addStudent(stud);
 
     Student stud1;
-    stud1.setFio("Крюкова","Ольга","Петровна"); stud1.setRating(4);
+    stud1.setFio("РљСЂСЋРєРѕРІР°","РћР»СЊРіР°","РџРµС‚СЂРѕРІРЅР°"); stud1.setRating(4);
     group.addStudent(stud1);
 
     Student stud2;
-    stud2.setFio("Дудник","Андрей","Романович"); stud2.setRating(5);
+    stud2.setFio("Р”СѓРґРЅРёРє","РђРЅРґСЂРµР№","Р РѕРјР°РЅРѕРІРёС‡"); stud2.setRating(5);
     group.addStudent(stud2);
 
     Student stud3;
-    stud3.setFio("Медведев","Дмитрий","Алексеевич"); stud3.setRating(4);
+    stud3.setFio("РњРµРґРІРµРґРµРІ","Р”РјРёС‚СЂРёР№","РђР»РµРєСЃРµРµРІРёС‡"); stud3.setRating(4);
     group.addStudent(stud3);
 
     Student stud4;
-    stud4.setFio("Тараканов","Борис","Давидович"); stud4.setRating(3);
+    stud4.setFio("РўР°СЂР°РєР°РЅРѕРІ","Р‘РѕСЂРёСЃ","Р”Р°РІРёРґРѕРІРёС‡"); stud4.setRating(3);
     group.addStudent(stud4);
 
     Student stud11;
-    stud11.setFio("Исакова","Юлия","Павловна"); stud11.setRating(1);
+    stud11.setFio("РСЃР°РєРѕРІР°","Р®Р»РёСЏ","РџР°РІР»РѕРІРЅР°"); stud11.setRating(1);
     group.addStudent(stud11);
 }
+

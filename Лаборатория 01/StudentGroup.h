@@ -15,10 +15,10 @@ class StudentGroup
         list<Student> getSortedListByAlphabet();
         list<Student> getSortedListByRating();
 
-        //объявление дружеских функций компораторов для сравнения двух студентов
+        //РѕР±СЉСЏРІР»РµРЅРёРµ РґСЂСѓР¶РµСЃРєРёС… С„СѓРЅРєС†РёР№ РєРѕРјРїРѕСЂР°С‚РѕСЂРѕРІ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ РґРІСѓС… СЃС‚СѓРґРµРЅС‚РѕРІ
         friend bool comAlphabet(Student& a, Student& b);
         friend bool comRating(Student& a, Student& b);
-        //дружеская функция перегрузки оператора вывода
+        //РґСЂСѓР¶РµСЃРєР°СЏ С„СѓРЅРєС†РёСЏ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
         friend ostream &operator<<(ostream &stream, StudentGroup &obj);
 
     protected:

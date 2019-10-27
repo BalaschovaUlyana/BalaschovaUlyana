@@ -4,54 +4,48 @@
 using namespace std;
 
 //конструктор класса
-Student::Student()
+Student::Student(const string& secondName, const string& firstName, const string& patronymic)
 {
-    Student::firstName = "Имя";
-    Student::secondName = "Фамилия";
-    Student::patronymic = "Отчество";
+	Student::firstName = firstName;
+	Student::secondName = secondName;
+	Student::patronymic = patronymic;
 
-    Student::rating = 1;
+	Student::rating = 1;
 }
 
 Student::~Student()
 {
 }
 
-void Student::setFio(string secondName, string firstName, string patronymic)
-{
-    Student::firstName = firstName;
-    Student::secondName = secondName;
-    Student::patronymic = patronymic;
-}
-
 string Student::getFIO()
 {
-    return Student::secondName+" "+Student::firstName+" "+Student::patronymic;
+	return Student::secondName + " " + Student::firstName + " " + Student::patronymic;
 }
 
 void Student::setRating(int raiting)
 {
-    Student::rating = raiting;
+	Student::rating = raiting;
 }
 
 int Student::getRating()
 {
-    return Student::rating;
+	return Student::rating;
 }
 
 //метод проверки одинаковых ФИО студентов и их оценок
-bool Student::equalStudent(Student student)
+bool Student::equalStudent(Student& student)
 {
-    //если ФИО текущего студента такое же как и имя переданного студента
-    //и их рейтинг одинаковый возвращаем TRUE;
-    if(this->getFIO() == student.getFIO()
-       && this->rating == student.rating)
-        return true;
-    return false;
+	//если ФИО текущего студента такое же как и имя переданного студента
+	//и их рейтинг одинаковый возвращаем TRUE;
+	if (this->getFIO() == student.getFIO()
+		&& this->rating == student.rating)
+		return true;
+	return false;
 }
 
-void Student::printStudent()
+/// метод перегружающий стандартный вывод класса
+ostream& operator<<(ostream& stream, Student& obj)
 {
-    cout<<Student::getFIO()<<" "<<Student::getRating()<<endl;
+	stream << obj.getFIO() << " " << obj.getRating() << endl;
+	return stream;
 }
-

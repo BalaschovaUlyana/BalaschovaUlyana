@@ -8,7 +8,7 @@ public:
 	NormalStudent(const string& secondName, const string& firstName, const string& patronymic, const int& rating) : Student(secondName, firstName, patronymic) 
 	{
 		this->rating = rating;
-		type = "Обычный студент";
+		type = "РћР±С‹С‡РЅС‹Р№ СЃС‚СѓРґРµРЅС‚";
 	};
 	virtual ~NormalStudent();
 	void setRating(int rating);

@@ -7,7 +7,7 @@ public:
 	CouncilMemberStudent(const string& secondName, const string& firstName, const string& patronymic, const int& rating) : Student(secondName, firstName, patronymic)
 	{
 		setRating(rating);
-		type = "Член студенческого совета";
+		type = "Р§Р»РµРЅ СЃС‚СѓРґРµРЅС‡РµСЃРєРѕРіРѕ СЃРѕРІРµС‚Р°";
 	}
 	virtual ~CouncilMemberStudent() {}
 	void setRating(int rating)
@@ -19,3 +19,4 @@ public:
 		}
 	}
 };
+

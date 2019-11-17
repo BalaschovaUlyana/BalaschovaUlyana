@@ -7,7 +7,7 @@ public:
 	BotanistStudent(const string& secondName, const string& firstName, const string& patronymic, const int& rating) : Student(secondName, firstName, patronymic)
 	{
 		setRating(rating);
-		type = "Ботаник";
+		type = "Р‘РѕС‚Р°РЅРёРє";
 	}
 	virtual ~BotanistStudent() {}
 	void setRating(int rating)
@@ -20,4 +20,3 @@ public:
 		}
 	}
 };
-

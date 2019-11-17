@@ -24,7 +24,7 @@ public:
 	list<Student*> getSortedListByAlphabet();
 	list<Student*> getSortedListByRating();
 	
-	//дружеская функция перегрузки оператора вывода
+	//РґСЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
 	friend ostream& operator<<(ostream& stream, StudentGroup& obj);
 	vector<Student*> students;
 protected:

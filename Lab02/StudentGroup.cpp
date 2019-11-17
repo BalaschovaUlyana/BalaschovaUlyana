@@ -112,8 +112,7 @@ Student* StudentGroup::getStudentByFIO(string FIO)
 		}
 		
 	}
-	return NULL;
-	//return nullptr;
+	return nullptr;
 }
 
 ///метод компаратора для сравнения двух фамилий в лексикографическом порядке

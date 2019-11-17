@@ -28,17 +28,17 @@ public:
 	}
 	bool equalStudent(Student* student)
 	{
-		//если ФИО текущего студента такое же как и имя переданного студента
-		//и их рейтинг одинаковый возвращаю TRUE;
+		//РµСЃР»Рё Р¤РРћ С‚РµРєСѓС‰РµРіРѕ СЃС‚СѓРґРµРЅС‚Р° С‚Р°РєРѕРµ Р¶Рµ РєР°Рє Рё РёРјСЏ РїРµСЂРµРґР°РЅРЅРѕРіРѕ СЃС‚СѓРґРµРЅС‚Р°
+		//Рё РёС… СЂРµР№С‚РёРЅРі РѕРґРёРЅР°РєРѕРІС‹Р№ РІРѕР·РІСЂР°С‰Р°СЋ TRUE;
 		if (this->getFIO() == student->getFIO()
 			&& this->rating == student->rating)
 			return true;
 		return false;
 	}
-	/// метод перегружающий стандартный вывод класса
+	/// РјРµС‚РѕРґ РїРµСЂРµРіСЂСѓР¶Р°СЋС‰РёР№ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РІС‹РІРѕРґ РєР»Р°СЃСЃР°
 	friend ostream& operator<<(ostream& stream, Student& obj)
 	{
-		stream <<obj.getFIO()  << " " << obj.type  << "	||Оценка: " << obj.getRating() << endl;
+		stream <<obj.getFIO()  << " " << obj.type  << "	||РћС†РµРЅРєР°: " << obj.getRating() << endl;
 		return stream;
 	}
 	string firstName;
@@ -49,4 +49,3 @@ public:
 
 	int rating;
 };
-

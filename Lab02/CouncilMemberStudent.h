@@ -7,7 +7,6 @@ public:
 	CouncilMemberStudent(const string& secondName, const string& firstName, const string& patronymic, const int& rating) : Student(secondName, firstName, patronymic)
 	{
 		setRating(rating);
-		type = "Член студенческого совета";
 	}
 	virtual ~CouncilMemberStudent() {}
 	void setRating(int rating)
@@ -18,5 +17,8 @@ public:
 			Student::rating = 3;
 		}
 	}
+
+	string getType() { return "Член студенческого совета"; }
 };
+
 

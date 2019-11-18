@@ -5,11 +5,13 @@
 using namespace std;
 StudentGroup::StudentGroup()
 {
-	int maxStudents = 20;
+	cout << "Создание" << endl;
 }
 
 StudentGroup::~StudentGroup()
 {
+	cout << "Удаление" << endl;
+	students.clear();
 }
 
 void StudentGroup::addStudent(Student* student)
@@ -37,12 +39,12 @@ void StudentGroup::deleteStudent(Student* student)
 		cout <<"Переданный аргумент равен NULL"<< endl;
 		return;
 	}
-	//иду в цикле до последнего элемента списка
+	//идём в цикле до последнего элемента списка
 	for (int i = 0; i < students.size(); i++)
 	{
 		if (students[i]->equalStudent(student))
 		{
-			if (students[i]->type == "Член студенческого совета")
+			if (students[i]->getType() == "Член студенческого совета")
 			{
 				cout << "Данного студента не возможно отчислить. Он член студенческого совета" << endl;
 				return;
@@ -71,13 +73,17 @@ void StudentGroup::changeTypeStudent(Student* student)
 	{
 		if (students[i]->equalStudent(student))
 		{
-			cout <<endl<< "Текущий тип студента: " << student->type << endl;
+			cout <<endl<< "Текущий тип студента: " << student->getType() << endl;
 			cout << "Введите 1 чтобы изменить его тип на Обычного студента"<<endl;
 			cout << "Введите 2 чтобы изменить его тип на ботаника" << endl;
 			cout << "Введите 3 чтобы изменить его тип на члена студенческого совета" << endl;
 			int type = 0;
 			cin >> type;
-			if (type == 0)return;
+			if (type < 1 || type > 3)
+			{
+				cout << "Вы ввели неверный тип студента" << endl;
+				return;
+			}
 			if (type == 1) {
 				students[i] = new NormalStudent(student->secondName, student->firstName, student->patronymic, student->rating);
 			}
@@ -107,12 +113,13 @@ Student* StudentGroup::getStudentByFIO(string FIO)
 		//сравниваем их фамилии
 		if (tempFIO == FIO)
 		{
-			///возвращаем разыменновый итератор на текущего студента
+			///возвращаtv разыменновый итератор на текущего студента
 			return students[i];
 		}
 		
 	}
 	return nullptr;
+	
 }
 
 ///метод компаратора для сравнения двух фамилий в лексикографическом порядке
@@ -125,7 +132,7 @@ list<Student*> StudentGroup::getSortedListByAlphabet()
 {
 	///делаем копию списка студентов
 	list<Student*> tempList = getListStudent();
-	///сортируем копию  методом компаратора
+	///сортируем копию методом компаратора
 	tempList.sort(comAlphabet);
 	///возвращаем копию списка
 	return tempList;
@@ -166,3 +173,4 @@ ostream& operator<<(ostream& stream, StudentGroup& obj)
 	}
 	return stream;
 }
+

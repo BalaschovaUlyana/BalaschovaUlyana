@@ -21,6 +21,8 @@ public:
 	}
 
 	virtual void setRating(int rating) = 0;
+
+	virtual string getType() = 0;
 	
 	int getRating()
 	{
@@ -29,7 +31,7 @@ public:
 	bool equalStudent(Student* student)
 	{
 		//если ФИО текущего студента такое же как и имя переданного студента
-		//и их рейтинг одинаковый возвращаю TRUE;
+		//и их рейтинг одинаковый возвращаем TRUE;
 		if (this->getFIO() == student->getFIO()
 			&& this->rating == student->rating)
 			return true;
@@ -38,15 +40,16 @@ public:
 	/// метод перегружающий стандартный вывод класса
 	friend ostream& operator<<(ostream& stream, Student& obj)
 	{
-		stream <<obj.getFIO()  << " " << obj.type  << "	||Оценка: " << obj.getRating() << endl;
+		stream <<obj.getFIO()  << " " << obj.getType()  << "	||Оценка: " << obj.getRating() << endl;
 		return stream;
 	}
 	string firstName;
 	string secondName;
 	string patronymic;
 
-	string type;
+
 
 	int rating;
 };
+
 

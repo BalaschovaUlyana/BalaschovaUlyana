@@ -41,8 +41,6 @@ int main()
 
 	group.deleteStudent(stud);
 	cout << group << endl;
-
-
 	
 	cout << endl << endl << "Группа 2" << endl;
 
@@ -90,10 +88,13 @@ void addStudents(StudentGroup& group)
 {
 	Student* stud = new BotanistStudent("Крюкова", "Ольга", "Петровна", 1);
 	group.addStudent(stud);
+	delete stud;
 
 	stud = new NormalStudent("Иванов", "Александр", "Александрович", 1);
 	group.addStudent(stud);
+	delete stud;
 
 	stud = new CouncilMemberStudent("Дудник", "Андрей", "Романович", 1);
 	group.addStudent(stud);
+	delete stud;
 }

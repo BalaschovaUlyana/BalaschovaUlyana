@@ -7,7 +7,6 @@ public:
 	BotanistStudent(const string& secondName, const string& firstName, const string& patronymic, const int& rating) : Student(secondName, firstName, patronymic)
 	{
 		setRating(rating);
-		type = "Ботаник";
 	}
 	virtual ~BotanistStudent() {}
 	void setRating(int rating)
@@ -19,4 +18,7 @@ public:
 			Student::rating = 4 + rand() % 2;
 		}
 	}
+
+	string getType() { return "Ботаник"; }
 };
+

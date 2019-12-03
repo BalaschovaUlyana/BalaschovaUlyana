@@ -17,21 +17,21 @@ public:
 	
 	void addStudent(Student* student);
 	void deleteStudent(Student* student);
-	void changeTypeStudent(Student* student);
+	void changeTypeStudent(Student* student, int type);
 	
 	Student* getStudentByFIO(string FIO);
 	
 	list<Student*> getSortedListByAlphabet();
 	list<Student*> getSortedListByRating();
 	
-	//дружественная функция перегрузки оператора вывода
+	//дружеская функция перегрузки оператора вывода
 	friend ostream& operator<<(ostream& stream, StudentGroup& obj);
 	vector<Student*> students;
 protected:
 
 private:
 	list<Student*> getListStudent();
-	int maxStudents;
+	int maxStudents ;
 };
 
 #endif // STUDENTGROUP_H

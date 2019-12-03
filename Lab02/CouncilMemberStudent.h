@@ -19,6 +19,7 @@ public:
 	}
 
 	string getType() { return "Член студенческого совета"; }
+	bool canDelete() { return false; };
 };
 
 

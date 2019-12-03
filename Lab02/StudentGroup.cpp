@@ -44,7 +44,7 @@ void StudentGroup::deleteStudent(Student* student)
 	{
 		if (students[i]->equalStudent(student))
 		{
-			if (students[i]->getType() == "Член студенческого совета")
+			if (!students[i]->canDelete())
 			{
 				cout << "Данного студента не возможно отчислить. Он член студенческого совета" << endl;
 				return;
@@ -60,7 +60,7 @@ void StudentGroup::deleteStudent(Student* student)
 	cout << "Студента: " << student->getFIO() << " нет в группе." << endl;
 }
 
-void StudentGroup::changeTypeStudent(Student* student)
+void StudentGroup::changeTypeStudent(Student* student, int type)
 {
 	if (student == NULL)
 	{
@@ -73,12 +73,6 @@ void StudentGroup::changeTypeStudent(Student* student)
 	{
 		if (students[i]->equalStudent(student))
 		{
-			cout <<endl<< "Текущий тип студента: " << student->getType() << endl;
-			cout << "Введите 1 чтобы изменить его тип на Обычного студента"<<endl;
-			cout << "Введите 2 чтобы изменить его тип на ботаника" << endl;
-			cout << "Введите 3 чтобы изменить его тип на члена студенческого совета" << endl;
-			int type = 0;
-			cin >> type;
 			if (type < 1 || type > 3)
 			{
 				cout << "Вы ввели неверный тип студента" << endl;
@@ -103,26 +97,26 @@ void StudentGroup::changeTypeStudent(Student* student)
 
 Student* StudentGroup::getStudentByFIO(string FIO)
 {
-	///переводим полученную строку с ФИО в нижний регистр
+	//переводим полученную строку с ФИО в нижний регистр
 	std::transform(FIO.begin(), FIO.end(), FIO.begin(), ::tolower);
 	for (int i = 0; i < students.size(); i++)
 	{
 		string tempFIO = students[i]->getFIO();
-		///переводим ФИО текущего студента группы в нижний регистр
+		//переводим ФИО текущего студента группы в нижний регистр
 		std::transform(tempFIO.begin(), tempFIO.end(), tempFIO.begin(), ::tolower);
 		//сравниваем их фамилии
 		if (tempFIO == FIO)
 		{
-			///возвращаtv разыменновый итератор на текущего студента
+			// разыменновый итератор на текущего студента
 			return students[i];
 		}
 		
 	}
-	return nullptr;
-	
+	return NULL;
+	//return nullptr;
 }
 
-///метод компаратора для сравнения двух фамилий в лексикографическом порядке
+//метод компаратора для сравнения двух фамилий в лексикографическом порядке
 bool comAlphabet(Student* a, Student* b)
 {
 	return a->getFIO() < b->getFIO();
@@ -173,4 +167,3 @@ ostream& operator<<(ostream& stream, StudentGroup& obj)
 	}
 	return stream;
 }
-

@@ -11,3 +11,4 @@ void NormalStudent::setRating(int raiting)
 {
 	NormalStudent::rating = raiting;
 }
+ 

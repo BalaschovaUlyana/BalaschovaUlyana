@@ -34,8 +34,9 @@ int main()
 	{
 		cout << "Данного ФИО нет в группе" << endl;
 	}
+	int type = 1;
 
-	group.changeTypeStudent(stud);
+	group.changeTypeStudent(stud,type);
 
 	cout << group << endl;
 
@@ -61,7 +62,9 @@ int main()
 		cout << "Данного ФИО нет в группе" << endl;
 	}
 
-	group2.changeTypeStudent(stud2);
+	type = 2;
+
+	group2.changeTypeStudent(stud2,type);
 	cout << group2 << endl;
 	
 	string temp;
@@ -71,7 +74,7 @@ int main()
 void printList(list<Student*> students)
 {
 	cout << "	!!Начало отсортированного списка!!" << endl;
-	//обьявляем итератор на первый элемент списка
+	// итератор на первый элемент списка
 	auto it = students.begin();
 	//идём в цикле до последнего элемента списка
 	while (it != students.end())
@@ -88,13 +91,10 @@ void addStudents(StudentGroup& group)
 {
 	Student* stud = new BotanistStudent("Крюкова", "Ольга", "Петровна", 1);
 	group.addStudent(stud);
-	delete stud;
 
 	stud = new NormalStudent("Иванов", "Александр", "Александрович", 1);
 	group.addStudent(stud);
-	delete stud;
 
 	stud = new CouncilMemberStudent("Дудник", "Андрей", "Романович", 1);
 	group.addStudent(stud);
-	delete stud;
 }

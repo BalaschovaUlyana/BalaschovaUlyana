@@ -23,6 +23,8 @@ public:
 	virtual void setRating(int rating) = 0;
 
 	virtual string getType() = 0;
+
+	virtual bool canDelete() { return true; };
 	
 	int getRating()
 	{
@@ -31,7 +33,7 @@ public:
 	bool equalStudent(Student* student)
 	{
 		//если ФИО текущего студента такое же как и имя переданного студента
-		//и их рейтинг одинаковый возвращаем TRUE;
+		//и их рейтинг одинаковый возвращаю TRUE;
 		if (this->getFIO() == student->getFIO()
 			&& this->rating == student->rating)
 			return true;
